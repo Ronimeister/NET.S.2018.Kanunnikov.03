@@ -30,3 +30,6 @@
 
 5) Исправлено задание Дня 1
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.01
+
+6) Добавлен анализ методов задания 6 из Дня 2 на больших массивах:
+    https://github.com/Ronimeister/NET.S.2018.Kanunnikov.02
