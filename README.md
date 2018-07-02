@@ -19,11 +19,14 @@
 
     MethodName_Number_Degree_Precision_ArgumentOutOfRangeException(double number, int degree, double precision, double expected) => Assert.Throws(() => ClassName.MethodName(number, degree, precision));
 
-2) Исправлено задание 1 из Дня 2
+2) 
+    Разработать класс, позволяющий выполнять вычисления НОД по алгоритму Евклида для двух, трех и т.д. целых чисел (http://en.wikipedia.org/wiki/Euclidean_algorithm , https://habrahabr.ru/post/205106/, https://habrahabr.ru/post/205106/ ). Методы класса помимо вычисления НОД должны предоставлять дополнительную возможность определения значение времени, необходимое для выполнения расчета. Добавить к разработанному классу методы, реализующие алгоритм Стейна (бинарный алгоритм Евклида) для расчета НОД двух, трех и т.д. целых чисел (http://en.wikipedia.org/wiki/Binary_GCD_algorithm, https://habrahabr.ru/post/205106/ ), а также методы, предоставляющие дополнительную возможность определения значение времени, необходимое для выполнения расчета. Рассмотреть различные возможности реализации методов, возвращающих время вычисления НОД. Разработать модульные тесты.
+
+3) Исправлено задание 1 из Дня 2
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.02/tree/master/BitOperations
 
-3) Исправлено задание 6 из Дня 2
+4) Исправлено задание 6 из Дня 2
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.02/tree/master/IntOperations
 
-4) Исправлено задание Дня 1
+5) Исправлено задание Дня 1
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.01
