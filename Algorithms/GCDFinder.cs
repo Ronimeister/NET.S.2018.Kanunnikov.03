@@ -159,7 +159,7 @@ namespace Algorithms
                 return firstNumber;
             }
 
-            return CalculateBinaryGCD(firstNumber, secondNumber);
+            return CalculateBinaryGCD(Math.Abs(firstNumber), Math.Abs(secondNumber));
         }
 
         /// <summary>
@@ -170,9 +170,6 @@ namespace Algorithms
         /// <returns>Needed GCD.</returns>
         private static int CalculateBinaryGCD(int first, int second)
         {
-            first = Math.Abs(first);
-            second = Math.Abs(second);
-
             if (first == second)
             {
                 return first;
