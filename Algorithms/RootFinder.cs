@@ -71,9 +71,7 @@ namespace Algorithms
         /// <param name="accuracy">Accuracy of measurement.</param>
         /// <returns>New value for the Newton algorithm.</returns>
         private static double SetNewIterationValue(double current, int power, double number)
-        {
-            return (((power - 1) * current) + (number / Math.Pow(current, power - 1))) / power;
-        }
+            => (((power - 1) * current) + (number / Math.Pow(current, power - 1))) / power;
         #endregion
     }
 }
