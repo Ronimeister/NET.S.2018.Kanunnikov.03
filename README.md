@@ -1,5 +1,5 @@
 # NET.S.2018.Kanunnikov.03
-1)
+1) RootFinder.cs
     Реализовать алгоритм FindNthRoot, позволяющий вычислять корень n-ой степени ( n ∈ N ) из вещественного числа а методом Ньютона с заданной точностью. Разработать модульные тесты (NUnit и (или) MS Unit Test) для тестирования метода. Примерные тест кейсы:
 
         [TestCase(1, 5, 0.0001,ExpectedResult =1)]
@@ -19,17 +19,34 @@
 
     MethodName_Number_Degree_Precision_ArgumentOutOfRangeException(double number, int degree, double precision, double expected) => Assert.Throws(() => ClassName.MethodName(number, degree, precision));
 
-2) 
+2) GCDFinder.cs
     Разработать класс, позволяющий выполнять вычисления НОД по алгоритму Евклида для двух, трех и т.д. целых чисел (http://en.wikipedia.org/wiki/Euclidean_algorithm , https://habrahabr.ru/post/205106/, https://habrahabr.ru/post/205106/ ). Методы класса помимо вычисления НОД должны предоставлять дополнительную возможность определения значение времени, необходимое для выполнения расчета. Добавить к разработанному классу методы, реализующие алгоритм Стейна (бинарный алгоритм Евклида) для расчета НОД двух, трех и т.д. целых чисел (http://en.wikipedia.org/wiki/Binary_GCD_algorithm, https://habrahabr.ru/post/205106/ ), а также методы, предоставляющие дополнительную возможность определения значение времени, необходимое для выполнения расчета. Рассмотреть различные возможности реализации методов, возвращающих время вычисления НОД. Разработать модульные тесты.
 
-3) Исправлено задание 1 из Дня 2
+3) NextIntFinder.cs
+    Реализовать метод FindNextBiggerNumber, который принимает положительное целое число и возвращает ближайшее наибольшее целое, состоящее из цифр исходного числа, и null (или -1), если такого числа не существует.
+
+    Разработать модульные тесты (NUnit или MS Unit Test) для тестирования метода. Примерные тест-кейсы
+        [TestCase(12, ExpectedResult = 21)]
+        [TestCase(513, ExpectedResult = 531)]
+        [TestCase(2017, ExpectedResult = 2071)]
+        [TestCase(414, ExpectedResult = 441)]
+        [TestCase(144, ExpectedResult = 414)]
+        [TestCase(1234321, ExpectedResult = 1241233)]
+        [TestCase(1234126, ExpectedResult = 1234162)]
+        [TestCase(3456432, ExpectedResult = 3462345)]
+        [TestCase(10, ExpectedResult = -1)]
+        [TestCase(20, ExpectedResult = -1)]
+    Добавить к методу FindNextBiggerNumber возможность вернуть время нахождения заданного числа, рассмотрев различные языковые возможности. Разработать модульные тесты (NUnit или MS Unit Test) для тестирования метода.
+
+
+4) Исправлено задание 1 из Дня 2
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.02/tree/master/BitOperations
 
-4) Исправлено задание 6 из Дня 2
+5) Исправлено задание 6 из Дня 2
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.02/tree/master/IntOperations
 
-5) Исправлено задание Дня 1
+6) Исправлено задание Дня 1
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.01
 
-6) Добавлен анализ методов задания 6 из Дня 2 на больших массивах:
+7) Добавлен анализ методов задания 6 из Дня 2 на больших массивах:
     https://github.com/Ronimeister/NET.S.2018.Kanunnikov.02
