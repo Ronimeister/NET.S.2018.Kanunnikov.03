@@ -68,7 +68,7 @@ namespace Algorithms
         /// </summary>
         /// <param name="current">Current value of needed root value.</param>
         /// <param name="power">Root degree.</param>
-        /// <param name="accuracy">Accuracy of measurement.</param>
+        /// <param name="number">Needed root value.</param>
         /// <returns>New value for the Newton algorithm.</returns>
         private static double SetNewIterationValue(double current, int power, double number)
             => (((power - 1) * current) + (number / Math.Pow(current, power - 1))) / power;
