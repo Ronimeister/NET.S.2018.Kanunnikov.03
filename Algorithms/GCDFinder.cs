@@ -10,70 +10,141 @@ namespace Algorithms
     {
         #region Public API
         /// <summary>
-        /// Public method that allows to get GCD value using Euclidean algorithm.
+        /// Public method that allows to get GCD value using Euclidean algorithm and to see how long it takes to does it.
         /// </summary>
         /// <param name="firstNumber">First number.</param>
         /// <param name="secondNumber">Second number.</param>
-        /// <param name="numbers">Additional numbers.</param>
-        /// <returns>Needed GCD.</returns>
-        public static int EuclideanGCD(int firstNumber, int secondNumber, params int[] numbers)
+        /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
+        public static (int, TimeSpan) EuclideanGCD(int firstNumber, int secondNumber)
         {
-            if(firstNumber.Equals(int.MinValue) || secondNumber.Equals(int.MinValue) || IsContainsMinInt(numbers))
+            if (firstNumber.Equals(int.MinValue) || secondNumber.Equals(int.MinValue))
             {
                 throw new OverflowException($"Parametrs must not be equal to int.MinValue!");
             }
 
-            int classicGCD = GetClassicGCD(firstNumber, secondNumber);
-            if (numbers.Length == 0)
-            {
-                return classicGCD;
-            }
-
-            return GetExtendedGCD(GetClassicGCD, firstNumber, secondNumber, numbers);
-        }
-
-        /// <summary>
-        /// Public method that allows to get GCD value using Stein algorithm.
-        /// </summary>
-        /// <param name="firstNumber">First number.</param>
-        /// <param name="secondNumber">Second number.</param>
-        /// <param name="numbers">Additional numbers.</param>
-        /// <returns>Needed GCD.</returns>
-        public static int SteinGCD(int firstNumber, int secondNumber, params int[] numbers)
-        {
-            if (firstNumber.Equals(int.MinValue) || secondNumber.Equals(int.MinValue) || IsContainsMinInt(numbers))
-            {
-                throw new OverflowException($"Parametrs must not be equal to int.MinValue!");
-            }
-
-            int binaryGCD = GetBinaryGCD(firstNumber, secondNumber);
-            if (numbers.Length == 0)
-            {
-                return binaryGCD;
-            }
-
-            return GetExtendedGCD(GetBinaryGCD, firstNumber, secondNumber, numbers);
-        }
-
-        /// <summary>
-        /// Public method that allows to see how long does it take to execute needed GCDFinder method.
-        /// </summary>
-        /// <param name="GCD">GCDFinder method.</param>
-        /// <param name="firstNumber">First number.</param>
-        /// <param name="secondNumber">Second number.</param>
-        /// <param name="numbers">Additional numbers.</param>
-        /// <returns>Execution time.</returns>
-        public static TimeSpan GetExecutionTime(Func<int, int, int[], int> GCD, int firstNumber, int secondNumber, params int[] numbers)
-        {
             Stopwatch stopWatch = Stopwatch.StartNew();
-
             stopWatch.Start();
-            int result = GCD(firstNumber, secondNumber, numbers);
+
+            int result = GetClassicGCD(firstNumber, secondNumber);
+
             stopWatch.Stop();
+            TimeSpan time = stopWatch.Elapsed;
+            return (result, time);
+        }
 
-            TimeSpan timer = stopWatch.Elapsed;
+        /// <summary>
+        /// Public method that allows to get GCD value using Euclidean algorithm and to see how long it takes to does it.
+        /// </summary>
+        /// <param name="firstNumber">First number.</param>
+        /// <param name="secondNumber">Second number.</param>
+        /// <param name="thirdNumber">Third number.</param>
+        /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
+        public static (int, TimeSpan) EuclideanGCD(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            if (firstNumber.Equals(int.MinValue) || secondNumber.Equals(int.MinValue) || thirdNumber.Equals(int.MinValue))
+            {
+                throw new OverflowException($"Parametrs must not be equal to int.MinValue!");
+            }
 
-            return timer;
+            Stopwatch stopWatch = Stopwatch.StartNew();
+            stopWatch.Start();
+
+            int result = GetExtendedGCD(GetClassicGCD, firstNumber, secondNumber, thirdNumber);
+
+            stopWatch.Stop();
+            TimeSpan time = stopWatch.Elapsed;
+            return (result, time);
+        }
+
+        /// <summary>
+        /// Public method that allows to get GCD value using Euclidean algorithm and to see how long it takes to does it.
+        /// </summary>
+        /// <param name="numbers">Any quantity of numbers.</param>
+        /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
+        public static (int, TimeSpan) EuclideanGCD(params int[] numbers)
+        {
+            if (IsContainsMinInt(numbers))
+            {
+                throw new OverflowException($"Parametrs must not be equal to int.MinValue!");
+            }
+
+            Stopwatch stopWatch = Stopwatch.StartNew();
+            stopWatch.Start();
+
+            int result = GetExtendedGCD(GetClassicGCD, numbers);
+
+            stopWatch.Stop();
+            TimeSpan time = stopWatch.Elapsed;
+            return (result, time);
+        }
+
+        /// <summary>
+        /// Public method that allows to get GCD value using Stein algorithm and to see how long it takes to does it.
+        /// </summary>
+        /// <param name="firstNumber">First number.</param>
+        /// <param name="secondNumber">Second number.</param>
+        /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
+        public static (int, TimeSpan) SteinGCD(int firstNumber, int secondNumber)
+        {
+            if (firstNumber.Equals(int.MinValue) || secondNumber.Equals(int.MinValue))
+            {
+                throw new OverflowException($"Parametrs must not be equal to int.MinValue!");
+            }
+
+            Stopwatch stopWatch = Stopwatch.StartNew();
+            stopWatch.Start();
+
+            int result = GetBinaryGCD(firstNumber, secondNumber);
+
+            stopWatch.Stop();
+            TimeSpan time = stopWatch.Elapsed;
+            return (result, time);
+        }
+
+        /// <summary>
+        /// Public method that allows to get GCD value using Stein algorithm and to see how long it takes to does it.
+        /// </summary>
+        /// <param name="firstNumber">First number.</param>
+        /// <param name="secondNumber">Second number.</param>
+        /// <param name="thirdNumber">Third number.</param>
+        /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
+        public static (int, TimeSpan) SteinGCD(int firstNumber, int secondNumber, int thirdNumber)
+        {
+            if (firstNumber.Equals(int.MinValue) || secondNumber.Equals(int.MinValue) || thirdNumber.Equals(int.MinValue))
+            {
+                throw new OverflowException($"Parametrs must not be equal to int.MinValue!");
+            }
+
+            Stopwatch stopWatch = Stopwatch.StartNew();
+            stopWatch.Start();
+
+            int result = GetExtendedGCD(GetBinaryGCD, firstNumber, secondNumber, thirdNumber);
+
+            stopWatch.Stop();
+            TimeSpan time = stopWatch.Elapsed;
+            return (result, time);
+        }
+
+        /// <summary>
+        /// Public method that allows to get GCD value using Stein algorithm and to see how long it takes to does it.
+        /// </summary>
+        /// <param name="numbers">Any quantity of numbers.</param>
+        /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
+        public static (int, TimeSpan) SteinGCD(params int[] numbers)
+        {
+            if (IsContainsMinInt(numbers))
+            {
+                throw new OverflowException($"Parametrs must not be equal to int.MinValue!");
+            }
+
+            Stopwatch stopWatch = Stopwatch.StartNew();
+            stopWatch.Start();
+
+            int result = GetExtendedGCD(GetBinaryGCD, numbers);
+
+            stopWatch.Stop();
+            TimeSpan time = stopWatch.Elapsed;
+            return (result, time);
         }
         #endregion
 
@@ -102,43 +173,15 @@ namespace Algorithms
         /// <param name="secondNumber">Second number.</param>
         /// <param name="numbers">Additional numbers.</param>
         /// <returns>Needed GCD.</returns>
-        private static int GetExtendedGCD(Func<int, int, int> GCD, int firstNumber, int secondNumber, params int[] extendedNumbers)
+        private static int GetExtendedGCD(Func<int, int, int> GCD, params int[] extendedNumbers)
         {
-            int[] numbers = new int[extendedNumbers.Length + 2];
-            InitializeExtendedGCDArray(numbers, firstNumber, secondNumber, extendedNumbers);
-
-            return CalculateExtendedGCD(GCD, numbers);
-        }
-
-        /// <summary>
-        /// Method that calculate GCD from any variety of numbers. Part of "GetExtendedGCD()" method.
-        /// </summary>
-        /// <param name="GCD">GCDFinder method.</param>
-        /// <param name="array"></param>
-        /// <returns>Needed GCD.</returns>
-        private static int CalculateExtendedGCD(Func<int, int, int> GCD, params int[] array)
-        {
-            int result = array[0];
-            for (int i = 1; i < array.Length; i++)
+            int result = extendedNumbers[0];
+            for (int i = 1; i < extendedNumbers.Length; i++)
             {
-                result = GCD(array[i], result);
+                result = GCD(extendedNumbers[i], result);
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// Method that initialize int[] from couple of arguments.
-        /// </summary>
-        /// <param name="array">Source array.</param>
-        /// <param name="firstNumber">First number.</param>
-        /// <param name="secondNumber">Second number.</param>
-        /// <param name="extended">Additional numbers.</param>
-        private static void InitializeExtendedGCDArray(int[] array, int first, int second, params int[] extended)
-        {
-            array[0] = first;
-            array[1] = second;
-            Array.Copy(extended, 0, array, 2, extended.Length);
         }
 
         /// <summary>
@@ -151,12 +194,12 @@ namespace Algorithms
         {
             if (firstNumber == 0)
             {
-                return secondNumber;
+                return Math.Abs(secondNumber);
             }
 
             if (secondNumber == 0 || firstNumber == secondNumber)
             {
-                return firstNumber;
+                return Math.Abs(firstNumber);
             }
 
             return CalculateBinaryGCD(Math.Abs(firstNumber), Math.Abs(secondNumber));
