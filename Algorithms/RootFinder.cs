@@ -14,6 +14,7 @@ namespace Algorithms
         /// <param name="number">Number, which root we need to find.</param>
         /// <param name="power">Root degree.</param>
         /// <param name="accuracy">Accuracy of measurement.</param>
+        /// <exception cref="ArgumentException">Throws when the accuracy isn't contains value in range (0,1) or power isn't positive.</exception>
         /// <returns>Nth root in form of real number.</returns>
         public static double FindRoot(double number, int power, double accuracy)
         {
