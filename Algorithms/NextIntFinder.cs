@@ -13,6 +13,7 @@ namespace Algorithms
         /// Public method that finds the next Int32 number that contains digits of <param name="number">.
         /// </summary>
         /// <param name="number">Number which digits should be used to find the result.</param>
+        /// <exception cref="ArgumentException">Throws when the number is less than 0.</exception>
         /// <returns>Int32 value that bigger than <param name="number"> and contains <param name="number"> digits.</returns>
         public static int FindNextBiggerNumber(int number)
         {
@@ -154,6 +155,7 @@ namespace Algorithms
         /// Convert int[] to int.
         /// </summary>
         /// <param name="digits">int[] which should be used to get int value.</param>
+        /// <exception cref="OverflowException">Throws when the int[] if bigger than int.MaxValue</exception>
         /// <returns>int value.</returns>
         private static int DigitsArrayToInt(int[] digits)
         {
