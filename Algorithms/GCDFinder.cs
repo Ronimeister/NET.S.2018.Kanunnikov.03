@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 namespace Algorithms
@@ -14,7 +14,6 @@ namespace Algorithms
         /// </summary>
         /// <param name="firstNumber">First number.</param>
         /// <param name="secondNumber">Second number.</param>
-        /// <exception cref="OverflowException">Throws when one of the parametrs is equal to int.MinValue.</exception>
         /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
         public static (int, TimeSpan) EuclideanGCD(int firstNumber, int secondNumber)
         {
@@ -39,7 +38,6 @@ namespace Algorithms
         /// <param name="firstNumber">First number.</param>
         /// <param name="secondNumber">Second number.</param>
         /// <param name="thirdNumber">Third number.</param>
-        /// <exception cref="OverflowException">Throws when one of the parametrs is equal to int.MinValue.</exception>
         /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
         public static (int, TimeSpan) EuclideanGCD(int firstNumber, int secondNumber, int thirdNumber)
         {
@@ -62,7 +60,6 @@ namespace Algorithms
         /// Public method that allows to get GCD value using Euclidean algorithm and to see how long it takes to does it.
         /// </summary>
         /// <param name="numbers">Any quantity of numbers.</param>
-        /// <exception cref="OverflowException">Throws when one of the parametrs is equal to int.MinValue.</exception>
         /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
         public static (int, TimeSpan) EuclideanGCD(params int[] numbers)
         {
@@ -86,7 +83,6 @@ namespace Algorithms
         /// </summary>
         /// <param name="firstNumber">First number.</param>
         /// <param name="secondNumber">Second number.</param>
-        /// <exception cref="OverflowException">Throws when one of the parametrs is equal to int.MinValue.</exception>
         /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
         public static (int, TimeSpan) SteinGCD(int firstNumber, int secondNumber)
         {
@@ -111,7 +107,6 @@ namespace Algorithms
         /// <param name="firstNumber">First number.</param>
         /// <param name="secondNumber">Second number.</param>
         /// <param name="thirdNumber">Third number.</param>
-        /// <exception cref="OverflowException">Throws when one of the parametrs is equal to int.MinValue.</exception>
         /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
         public static (int, TimeSpan) SteinGCD(int firstNumber, int secondNumber, int thirdNumber)
         {
@@ -134,7 +129,6 @@ namespace Algorithms
         /// Public method that allows to get GCD value using Stein algorithm and to see how long it takes to does it.
         /// </summary>
         /// <param name="numbers">Any quantity of numbers.</param>
-        /// <exception cref="OverflowException">Throws when one of the parametrs is equal to int.MinValue.</exception>
         /// <returns>A ValueTuple that contains "result" and "time" fields.</returns>
         public static (int, TimeSpan) SteinGCD(params int[] numbers)
         {
@@ -154,7 +148,7 @@ namespace Algorithms
         }
         #endregion
 
-        #region Private API
+        #region Private methods
         /// <summary>
         /// Simple GCD method.
         /// </summary>
@@ -169,6 +163,20 @@ namespace Algorithms
             }
 
             return GetClassicGCD(secondNumber % firstNumber, firstNumber);
+        }
+
+        /// <summary>
+        /// Method that finds GCD from three int numbers.
+        /// </summary>
+        /// <param name="GCD">GCDFinder method.</param>
+        /// <param name="firstNumber">First number.</param>
+        /// <param name="secondNumber">Second number.</param>
+        /// <param name="thirdNumber">Third number.</param>
+        /// <returns>Needed GCD</returns>
+        private static int GetExtendedGCD(Func<int, int, int> GCD, int firstNumber, int secondNumber, int thirdNumber)
+        {
+            int firstPart = GCD(firstNumber, secondNumber);
+            return GCD(firstPart, thirdNumber);
         }
 
         /// <summary>
